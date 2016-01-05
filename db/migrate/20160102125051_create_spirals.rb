@@ -1,6 +1,6 @@
-class CreateBundles < ActiveRecord::Migration
+class CreateSpirals < ActiveRecord::Migration
   def change
-    create_table :bundles do |t|
+    create_table :spirals do |t|
       t.string :name
       t.text :description
       t.timestamps null: false

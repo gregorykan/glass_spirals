@@ -11,25 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160102044336) do
+ActiveRecord::Schema.define(version: 20160102125105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bundle_exchanges", force: :cascade do |t|
-    t.integer "bundle_id"
-    t.integer "exchange_id"
-  end
-
-  add_index "bundle_exchanges", ["bundle_id"], name: "index_bundle_exchanges_on_bundle_id", using: :btree
-  add_index "bundle_exchanges", ["exchange_id"], name: "index_bundle_exchanges_on_exchange_id", using: :btree
-
-  create_table "bundles", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "entities", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +30,21 @@ ActiveRecord::Schema.define(version: 20160102044336) do
     t.datetime "updated_at",  null: false
     t.integer  "entity_a_id"
     t.integer  "entity_b_id"
+  end
+
+  create_table "spiral_exchanges", force: :cascade do |t|
+    t.integer "spiral_id"
+    t.integer "exchange_id"
+  end
+
+  add_index "spiral_exchanges", ["exchange_id"], name: "index_spiral_exchanges_on_exchange_id", using: :btree
+  add_index "spiral_exchanges", ["spiral_id"], name: "index_spiral_exchanges_on_spiral_id", using: :btree
+
+  create_table "spirals", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
